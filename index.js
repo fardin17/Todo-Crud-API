@@ -1,7 +1,7 @@
 const express = require ('express')
 const mongoose = require ('mongoose')
 const todoHandler = require('./todoHandler')
-const url ='mongodb://localhost/Todos'
+const url ='mongodb+srv://fardin17:Fardin14@cluster0.ksojf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
 const app = express()
 app.use(express.json())
