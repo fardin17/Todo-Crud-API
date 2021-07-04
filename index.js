@@ -1,7 +1,7 @@
 const express = require ('express')
 const mongoose = require ('mongoose')
 const todoHandler = require('./todoHandler')
-const url ='mongodb+srv://fardin17:Fardin14@cluster0.ksojf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+const url ='mongodb+srv://fardin17:1234@cluster0.ksojf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 const port = process.env.PORT || 9000;
 
 const app = express()
@@ -16,7 +16,7 @@ mongoose.connect(url, {
     console.log('Fardin you have done a great job!')
 })
 .catch((err)=>{
-    console.log('err')
+    console.log("You're failed BRO!")
 })
 
 app.use('/todo', todoHandler);
