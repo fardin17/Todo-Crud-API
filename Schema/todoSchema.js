@@ -6,14 +6,11 @@ const todoSchema = mongoose.Schema({
         required: true,
 
     },
-    description: String,
-    status:{
+    priority:{
         type: String,
-        enum: ['active', 'inactive']
+        enum: ['Low', 'Medium', 'High'],
+        required: true,
     },
-    date: {
-        type: Date,
-        default: Date.now,
-    }
+    
 })
 module.exports = todoSchema

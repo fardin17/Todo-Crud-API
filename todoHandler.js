@@ -6,10 +6,8 @@ const Todo = new mongoose.model('Todo', todoSchema)
 
 // Get All TODOs
 router.get('/', async(req, res)=>{
-     await Todo.find({status:'active'}).select({
-         _id : 0,
+     await Todo.find().select({
          __v : 0,
-         date: 0
      })
      .exec((err, data)=>{
         if (err){
@@ -20,7 +18,7 @@ router.get('/', async(req, res)=>{
         else{
          res.status(200).json({
              result: data,
-             message:'Inserted Succesfully'
+             message:'Success!'
          }) 
         }
      })
@@ -37,7 +35,7 @@ router.get('/:id', async(req, res)=>{
         else{
             res.status(200).json({
                 result: data,
-                message: "Data get Succesfully"
+                message: "Task get Succesfully!"
             })
         }
     })
@@ -81,8 +79,8 @@ router.post('/all', async(req, res)=>{
 router.put('/:id', async(req, res)=>{
     await Todo.updateOne({_id: req.params.id},{
         $set:{
-            status:'inactive',
-            description: req.body.description
+            title:req.body.title,
+            priority: req.body.priority
         }, 
     },
         (err) =>{
@@ -93,7 +91,7 @@ router.put('/:id', async(req, res)=>{
             }
             else{
              res.status(200).json({
-                 message:'Updated Succesfully'
+                 message:'Task updated Succesfully'
              }) 
             }   
         }
@@ -111,7 +109,7 @@ router.delete('/:id', async(req, res)=>{
         }
         else{
             res.status(200).json({
-                message: "Data deleted succesfully"
+                message: "Task deleted succesfully"
             })
         }
     })
